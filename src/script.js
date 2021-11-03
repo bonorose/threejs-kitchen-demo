@@ -3,6 +3,7 @@ import './fontawesome/css/all.min.css'
 import './style.css'
 import * as THREE from 'three'
 import * as GLTFLoader from 'three-gltf-loader'
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
@@ -16,6 +17,13 @@ console.log(gui)
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
+
+// RGB Loader
+const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'studio_1.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        // scene.background = texture
+        scene.environment = texture
+})
 
 // Scene
 const scene = new THREE.Scene()
@@ -132,6 +140,9 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.toneMapping = THREE.ACESFilmicToneMapping
+renderer.toneMappingExposure = 1
+renderer.outputEncoding = THREE.sRGBEncoding
 
 /**
  * Animate
