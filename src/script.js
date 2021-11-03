@@ -11,7 +11,8 @@ const textureLoader = new THREE.TextureLoader()
 const modelLoader = new GLTFLoader()
 
 // Debug
-const gui = new dat.GUI()
+const gui = new dat.GUI( {closeOnTop: true, closed:true} )
+console.log(gui)
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -22,15 +23,16 @@ const scene = new THREE.Scene()
 // Load a glTF resource
 modelLoader.load(
 	// resource URL
-	'models/l-shaped/scene.gltf',
+	'models/l-shaped-4/scene.gltf',
 	// called when the resource is loaded
 	function ( gltf ) {
-        gltf.scene.traverse( function ( child ) {
-            if ( child.isMesh ) {
-                child.geometry.center(); // center here
-            }
-        });
-        gltf.scene.scale.set(0.003, 0.003, 0.003);
+        // gltf.scene.traverse( function ( child ) {
+        //     if ( child.isMesh ) {
+        //         child.geometry.center(); // center here
+        //     }
+        // });
+        // gltf.scene.scale.set(0.003, 0.003, 0.003);
+        gltf.scene.position.set(-1, -2, 0)
 		scene.add( gltf.scene );
 
 		gltf.animations; // Array<THREE.AnimationClip>
@@ -83,14 +85,43 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 0
-camera.position.y = 0
-camera.position.z = 2
+camera.position.x = 5
+camera.position.y = 4
+camera.position.z = 7
 scene.add(camera)
 
+// const cameraSettings = gui.addFolder('Camera')
+// cameraSettings.add(camera.position, 'x').step(0.01)
+// cameraSettings.add(camera.position, 'y').step(0.01)
+// cameraSettings.add(camera.position, 'z').step(0.01)
+// cameraSettings.add(camera.rotation, 'x').step(0.01)
+// cameraSettings.add(camera.rotation, 'y').step(0.01)
+// cameraSettings.add(camera.rotation, 'z').step(0.01)
+
 // Controls
-// const controls = new OrbitControls(camera, canvas)
-// controls.enableDamping = true
+const controls = new OrbitControls(camera, canvas)
+controls.enableDamping = true
+
+// Lights
+const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 7.54);
+scene.add(ambient);
+ambient.position.set(0,-1,0)
+
+const ambientLightSettings = {
+    intensity: 7.54,
+    skyColor: 0xffffbb,
+    groundColor: 0x080820
+}
+
+const ambientLight = gui.addFolder("Ambient Light")
+ambientLight.add(ambientLightSettings, 'intensity').min(0).max(15).step(0.01)
+ .onChange(() => {
+     ambient.intensity = ambientLightSettings.intensity
+ })
+
+const light = new THREE.DirectionalLight(0xFFFFFF, 1);
+light.position.set( 1, 10, 6);
+scene.add(light);
 
 /**
  * Renderer

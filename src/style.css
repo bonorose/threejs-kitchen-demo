@@ -16,6 +16,12 @@ body {
     overflow-x: hidden;
 }
 
+#gui {
+    position: inherit;
+    top:2px;
+    left:2px;
+}
+
 .webgl
 {
     position: absolute;
@@ -28,6 +34,23 @@ body {
 .optionsMenu {
     background: rgb(24, 24, 24);
     height: 100vh;
+}
+
+.itemOption {
+    background: rgb(110, 110, 110);
+    border-radius: 3rem;
+    width: 75px;
+    height: 75px;
+    margin: 5px;
+    color:white;
+    font-size: 0.95rem;
+}
+
+.itemOption::hover {
+    width: 100px;
+    height: 100px;
+    margin: 3px;
+    background: rgb(165, 165, 165);
 }
 
 .container2 {
