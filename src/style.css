@@ -40,8 +40,8 @@ body {
     transition: .05s ease-in-out;
     background: rgb(110, 110, 110);
     border-radius: 3rem;
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
     margin: 5px;
     color:white;
     font-size: 0.95rem;
@@ -49,8 +49,8 @@ body {
 
 .itemOption:hover {
     transition: .05s ease-in-out;
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     margin: 5px;
     background: rgb(165, 165, 165);
 }
@@ -70,12 +70,21 @@ body {
 
 h1 {
     user-select: none;
-    font-size: 5.5rem;
+    font-size: 5rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-transform: uppercase;
     color: whitesmoke;
     opacity: 0.35;
     background-color: rgba(23, 26, 39, 0.103);
+}
+
+h2 {
+    user-select: none;
+    font-size: 3rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    color: whitesmoke;
+    opacity: 0.35;
 }
 
 /* section {height: 25vh} */

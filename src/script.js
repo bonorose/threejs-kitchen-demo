@@ -13,7 +13,7 @@ const modelLoader = new GLTFLoader()
 
 // Debug
 const gui = new dat.GUI( {closeOnTop: true, closed:true} )
-console.log(gui)
+// console.log(gui)
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -28,10 +28,78 @@ const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'studio_1.hdr',
 // Scene
 const scene = new THREE.Scene()
 
+// Material
+const woodMat = new THREE.MeshStandardMaterial()
+// woodMat.roughness = 0.1
+textureLoader.load('models/furniture/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+)
+textureLoader.load('models/furniture/textures/normal.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.normalMap = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+)
+textureLoader.load('models/furniture/textures/rough.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.roughnessMap = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+)
+
+const woodMatOptions = {
+    color: 0x121212
+}
+
+
+const metalMat = new THREE.MeshStandardMaterial( {} )
+metalMat.metalness = 1
+metalMat.roughness = 0.1
+// metalMat.envMap = scene.environment
+
+const metalMatOptions = {
+    roughness: 0.1,
+    metalness: 0.1,
+    color: 0x121212
+}
+
 // Load a glTF resource
 modelLoader.load(
 	// resource URL
-	'models/l-shaped-4/scene.gltf',
+	'models/furniture/drawer.gltf',
 	// called when the resource is loaded
 	function ( gltf ) {
         // gltf.scene.traverse( function ( child ) {
@@ -40,6 +108,14 @@ modelLoader.load(
         //     }
         // });
         // gltf.scene.scale.set(0.003, 0.003, 0.003);
+        gltf.scene.children[0].receiveShadow = true
+
+        // const woodenMaterial = gltf.scene.children[0].children[0].material
+        // const metalMaterial = gltf.scene.children[0].children[1].material
+
+        gltf.scene.children[0].children[1].material = metalMat
+        gltf.scene.children[0].children[0].material = woodMat
+
         gltf.scene.position.set(-1, -2, 0)
 		scene.add( gltf.scene );
 
@@ -64,6 +140,33 @@ modelLoader.load(
 
 	}
 );
+
+/*
+ * Model Controls
+ */
+console.log(scene)
+const modelOptions = gui.addFolder("Material Parameters")
+const woodOptions = modelOptions.addFolder("Wood")
+woodOptions.addColor(woodMatOptions, 'color')
+    .onChange(() => {
+        scene.children[3].children[0].children[0].material.color.set(woodMatOptions.color)
+    })
+
+
+const metalOptions = modelOptions.addFolder("Metal")
+metalOptions.addColor(metalMatOptions, 'color')
+    .onChange(() => {
+        scene.children[3].children[0].children[1].material.color.set(metalMatOptions.color)
+    })
+metalOptions.add(metalMatOptions, 'roughness').min(0).max(1).step(.001)
+    .onChange(() => {
+        scene.children[3].children[0].children[1].material.roughness = metalMatOptions.roughness
+    })
+metalOptions.add(metalMatOptions, 'metalness').min(0).max(1).step(.001)
+    .onChange(() => {
+        scene.children[3].children[0].children[1].material.metalness = metalMatOptions.metalness
+    })
+
 
 /**
  * Sizes
@@ -111,7 +214,7 @@ const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
 // Lights
-const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 7.54);
+const ambient = new THREE.HemisphereLight(0xffffbb, 0x080820, 3);
 scene.add(ambient);
 ambient.position.set(0,-1,0)
 
