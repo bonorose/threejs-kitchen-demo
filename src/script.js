@@ -272,6 +272,282 @@ function onDocumentMouseMove(event) {
     mouseY = (event.clientY - windowHalfY)
 }
 
+// Canvas Event Listers
+document.getElementById("wood1").addEventListener("click", updateWood1)
+
+function updateWood1() {
+    const woodMat = new THREE.MeshStandardMaterial()
+    textureLoader.load('textures/furniture/wood/w_1_dirty/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+    )
+    textureLoader.load('textures/furniture/wood/w_1_dirty/textures/normal.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.normalMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    textureLoader.load('textures/furniture/wood/w_1_dirty/textures/rough.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.roughnessMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    scene.children[3].children[0].children[0].material = woodMat   
+}
+
+document.getElementById("wood2").addEventListener("click", updateWood2)
+
+function updateWood2() {
+    const woodMat = new THREE.MeshStandardMaterial()
+    textureLoader.load('textures/furniture/wood/w_2_ply/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+    )
+    textureLoader.load('textures/furniture/wood/w_2_ply/textures/normal.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.normalMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    textureLoader.load('textures/furniture/wood/w_2_ply/textures/rough.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.roughnessMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    scene.children[3].children[0].children[0].material = woodMat   
+}
+
+document.getElementById("wood3").addEventListener("click", updateWood3)
+
+function updateWood3() {
+    const woodMat = new THREE.MeshStandardMaterial()
+    textureLoader.load('textures/furniture/wood/w_3_kitchenwood/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+    )
+    textureLoader.load('textures/furniture/wood/w_3_kitchenwood/textures/normal.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.normalMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    textureLoader.load('textures/furniture/wood/w_3_kitchenwood/textures/rough.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.roughnessMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    scene.children[3].children[0].children[0].material = woodMat   
+}
+
+document.getElementById("wood4").addEventListener("click", updateWood4)
+
+function updateWood4() {
+    const woodMat = new THREE.MeshStandardMaterial()
+    textureLoader.load('textures/furniture/wood/w_4_table/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+    )
+    textureLoader.load('textures/furniture/wood/w_4_table/textures/normal.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.normalMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    textureLoader.load('textures/furniture/wood/w_4_table/textures/rough.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.roughnessMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    scene.children[3].children[0].children[0].material = woodMat   
+}
+
+document.getElementById("wood5").addEventListener("click", updateWood5)
+
+function updateWood5() {
+    const woodMat = new THREE.MeshStandardMaterial()
+    textureLoader.load('textures/furniture/wood/w_5_finegrain/textures/diff.jpg',
+
+    // onLoad callback
+    function ( texture ) {
+        // in this example we create the material when the texture is loaded
+        woodMat.map = texture
+    },
+
+    // onProgress callback currently not supported
+    undefined,
+
+    // onError callback
+    function ( err ) {
+        console.error( 'An error happened.' )
+    }
+    )
+    textureLoader.load('textures/furniture/wood/w_5_finegrain/textures/normal.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.normalMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    textureLoader.load('textures/furniture/wood/w_5_finegrain/textures/rough.jpg',
+
+        // onLoad callback
+        function ( texture ) {
+            // in this example we create the material when the texture is loaded
+            woodMat.roughnessMap = texture
+        },
+
+        // onProgress callback currently not supported
+        undefined,
+
+        // onError callback
+        function ( err ) {
+            console.error( 'An error happened.' )
+        }
+    )
+    scene.children[3].children[0].children[0].material = woodMat   
+}
+
 const clock = new THREE.Clock()
 
 const tick = () =>
