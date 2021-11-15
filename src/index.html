@@ -9,14 +9,14 @@
     <div class='row'>
         <div class='col-lg-8'>
             <div class='container2 container' id="location">
-                <h1>Three.js Models interactive demo</h1>
+                <h2>Three.js Models interactive demo</h2>
             </div>
             <canvas class="webgl" id="location1"></canvas>
         </div>
         <div class='col-lg-4'>
             <div class='col container optionsMenu'>
                 <div class='row-lg-12'>
-                    <button  onclick="hideModelOption()"><h1>Options</h1></button>
+                    <button  onclick="hideModelOption()"><h2>Options</h2></button>
                     <select id='modelOptions' 
                     class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option selected>Select Model</option>
@@ -29,11 +29,11 @@
                 <hr>
 
                 <div class='row-lg-12'>
-                    <button onclick="hideMaterialOption()"><h1>Materials</h1></button>
+                    <button onclick="hideMaterialOption()"><h2><span>Materials <i id='arrowMat' class="fas fa-arrow-up"></i></span></h2></button>
                     <div class='col' id='materialsOption'>
                 
                         <div class='row-lg-12'>
-                        <h2>Wood</h2>
+                        <h3>Wood</h3>
                             <div class="row">
                                 <button class="col-lg-3 itemOption" id="wood1"
                                 style="background-image: url(textures/furniture/wood/w_1_dirty/textures/diff.jpg);">
@@ -54,16 +54,19 @@
                         </div>
 
                         <div class='row-lg-12'>
-                            <h2>Metal</h2>
+                            <h3>Metal</h3>
                             <div class="row">
-                                <button class="col-lg-3 itemOption"
-                                style="background-image: url(lighting/ballroom_1.png);">
+                                <button class="col-lg-3 itemOption" id="metal1"
+                                title="Alumninum"
+                                style="background: #a9acb6;">
                                 </button>
-                                <button class="col-lg-3 itemOption"
-                                style="background-image: url(lighting/studio_1.png);">
+                                <button class="col-lg-3 itemOption" id="metal2"
+                                title="Gold"
+                                style="background: #fdd017;">
                                 </button>
-                                <button class="col-lg-3 itemOption"
-                                style="background-image: url(lighting/studio_2.png);">
+                                <button class="col-lg-3 itemOption" id="metal3"
+                                title="Bronze"
+                                style="background: #b87333;">
                                 </button>
                             </div>
                         </div>
@@ -72,7 +75,7 @@
                 <hr>
 
                 <div class='row-lg-12'>
-                    <button onclick="hideLightningOption()"><h1>Lighting</h1> </button>
+                    <button onclick="hideLightningOption()"><h2><span>Lighting <i id='arrowMat2' class="fas fa-arrow-up"></i></span> </button>
                     <div class='col' id="lightningOption">
                         <div class="row">
                             <button class="col-lg-3 itemOption" id="light1"
@@ -168,18 +171,24 @@ function hideModelOption() {
 }
 function hideMaterialOption() {
     var x = document.getElementById("materialsOption");
+    var arrow = document.getElementById("arrowMat");
     if (x.style.display === "block") {
       x.style.display = "none";
+      arrow.className = "fas fa-arrow-down";
     } else {
       x.style.display = "block";
+      arrow.className = "fas fa-arrow-up";
     }
 }
 function hideLightningOption() {
     var x = document.getElementById("lightningOption");
+    var arrow = document.getElementById("arrowMat2");
     if (x.style.display === "block") {
       x.style.display = "none";
+      arrow.className = "fas fa-arrow-down";
     } else {
       x.style.display = "block";
+      arrow.className = "fas fa-arrow-up";
     }
 }
 </script>

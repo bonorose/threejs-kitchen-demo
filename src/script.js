@@ -93,7 +93,7 @@ metalMat.roughness = 0.1
 
 const metalMatOptions = {
     roughness: 0.1,
-    metalness: 0.1,
+    metalness: 1,
     color: 0x121212
 }
 
@@ -145,7 +145,7 @@ modelLoader.load(
 /*
  * Model Controls
  */
-console.log(scene)
+// console.log(scene)
 
 const modelOptions = gui.addFolder("Material Parameters")
 const woodOptions = modelOptions.addFolder("Wood")
@@ -596,6 +596,38 @@ function updateLighting5() {
     })
 }
 
+document.getElementById("metal1").addEventListener("click", updateMetal1)
+
+function updateMetal1() {
+    const metalMatOptions1 = {
+        roughness: 0.1,
+        metalness: 1,
+        color: 0xa9acb6
+    }
+    scene.children[3].children[0].children[1].material.color.set(metalMatOptions1.color)
+}
+
+document.getElementById("metal2").addEventListener("click", updateMetal2)
+
+function updateMetal2() {
+    const metalMatOptions2 = {
+        roughness: 0.1,
+        metalness: 1,
+        color: 0xfdd017
+    }
+    scene.children[3].children[0].children[1].material.color.set(metalMatOptions2.color)
+}
+
+document.getElementById("metal3").addEventListener("click", updateMetal3)
+
+function updateMetal3() {
+    const metalMatOptions3 = {
+        roughness: 0.1,
+        metalness: 1,
+        color: 0xb87333
+    }
+    scene.children[3].children[0].children[1].material.color.set(metalMatOptions3.color)
+}
 
 
 const clock = new THREE.Clock()

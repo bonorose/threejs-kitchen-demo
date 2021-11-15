@@ -93,4 +93,12 @@ h2 {
     opacity: 0.35;
 }
 
+h3 {
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    color: whitesmoke;
+    opacity: 0.35;
+}
+
 /* section {height: 25vh} */
