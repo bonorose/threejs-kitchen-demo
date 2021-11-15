@@ -548,6 +548,56 @@ function updateWood5() {
     scene.children[3].children[0].children[0].material = woodMat   
 }
 
+
+document.getElementById("light1").addEventListener("click", updateLighting1)
+
+function updateLighting1() {
+    const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'ballroom_1.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.background = texture
+        scene.environment = texture
+    })
+}
+
+document.getElementById("light2").addEventListener("click", updateLighting2)
+
+function updateLighting2() {
+    const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'studio_1.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.background = texture
+        scene.environment = texture
+    })
+}
+document.getElementById("light3").addEventListener("click", updateLighting3)
+
+function updateLighting3() {
+    const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'studio_2.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.background = texture
+        scene.environment = texture
+    })
+}
+document.getElementById("light4").addEventListener("click", updateLighting4)
+
+function updateLighting4() {
+    const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'studio_3.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.background = texture
+        scene.environment = texture
+    })
+}
+document.getElementById("light5").addEventListener("click", updateLighting5)
+
+function updateLighting5() {
+    const rgbeloader = new RGBELoader().setPath( 'lighting/' ).load( 'hall_1.hdr', function ( texture ) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.background = texture
+        scene.environment = texture
+    })
+}
+
+
+
 const clock = new THREE.Clock()
 
 const tick = () =>
