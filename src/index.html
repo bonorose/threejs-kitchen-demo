@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThreeJS Demo - Models & Configuration</title>
+    <script type="text/javascript" src="modelupdate.js"></script>
 </head>
 <body>
     <div class='row'>
@@ -16,8 +17,9 @@
         <div class='col-lg-4'>
             <div class='col container optionsMenu'>
                 <div class='row-lg-12'>
-                    <h1>Options</h1>
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    <button  onclick="hideModelOption()"><h1>Options</h1></button>
+                    <select id='modelOptions' 
+                    class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                         <option selected>Select Model</option>
                         <option value="0">Drawer</option>
                         <option value="1">L-Shaped Kitchen</option>
@@ -26,54 +28,73 @@
                     </select>
                 </div>
                 <hr>
+
                 <div class='row-lg-12'>
-                    <h1>Materials</h1>
-                </div>
-                <div class='row-lg-12'>
-                    <h2>Wood</h2>
-                    <div class="row">
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/ballroom_1.png);">
+                    <button onclick="hideMaterialOption()"><h1>Materials</h1></button>
+                    <div class='col' id='materialsOption'>
+                
+                        <div class='row-lg-12'>
+                        <h2>Wood</h2>
+                            <div class="row">
+                                <button class="col-lg-3 itemOption" onclick="loadWoodTexture1()"
+                                style="background-image: url(textures/furniture/wood/w_1_dirty/textures/diff.jpg);">
+                                </button>
+                                <button class="col-lg-3 itemOption" onclick="loadWoodTexture2()"
+                                style="background-image: url(textures/furniture/wood/w_2_ply/textures/diff.jpg);">
+                                </button>
+                                <button class="col-lg-3 itemOption" onclick="loadWoodTexture3()"
+                                style="background-image: url(textures/furniture/wood/w_3_kitchenwood/textures/diff.jpg);">
+                                </button>
+                                <button class="col-lg-3 itemOption" onclick="loadWoodTexture4()"
+                                style="background-image: url(textures/furniture/wood/w_4_table/textures/diff.jpg);">
+                                </button>
+                                <button class="col-lg-3 itemOption" onclick="loadWoodTexture5()"
+                                style="background-image: url(textures/furniture/wood/w_5_finegrain/textures/diff.jpg);">
+                                </button>
+                            </div>
                         </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_1.png);">
-                    </div>
-                </div>
-                <div class='row-lg-12'>
-                    <h2>Metal</h2>
-                    <div class="row">
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/ballroom_1.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_1.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_2.png);">
+
+                        <div class='row-lg-12'>
+                            <h2>Metal</h2>
+                            <div class="row">
+                                <button class="col-lg-3 itemOption"
+                                style="background-image: url(lighting/ballroom_1.png);">
+                                </button>
+                                <button class="col-lg-3 itemOption"
+                                style="background-image: url(lighting/studio_1.png);">
+                                </button>
+                                <button class="col-lg-3 itemOption"
+                                style="background-image: url(lighting/studio_2.png);">
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <hr>
+
                 <div class='row-lg-12'>
-                    <h1>Lighting</h1> 
-                    <div class="row">
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/ballroom_1.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_1.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_2.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/studio_3.png);">
-                        </div>
-                        <div class="col-lg-3 itemOption"
-                        style="background-image: url(lighting/hall_1.png);">
+                    <button onclick="hideLightningOption()"><h1>Lighting</h1> </button>
+                    <div class='col' id="lightningOption">
+                        <div class="row">
+                            <button class="col-lg-3 itemOption"
+                            style="background-image: url(lighting/ballroom_1.png);">
+                            </button>
+                            <button class="col-lg-3 itemOption"
+                            style="background-image: url(lighting/studio_1.png);">
+                            </button>
+                            <button class="col-lg-3 itemOption"
+                            style="background-image: url(lighting/studio_2.png);">
+                            </button>
+                            <button class="col-lg-3 itemOption"
+                            style="background-image: url(lighting/studio_3.png);">
+                            </button>
+                            <button class="col-lg-3 itemOption"
+                            style="background-image: url(lighting/hall_1.png);">
+                            </button>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -137,4 +158,30 @@
     <!-- Footer -->
 
 </body>
+<script>
+function hideModelOption() {
+    var x = document.getElementById("modelOptions");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+}
+function hideMaterialOption() {
+    var x = document.getElementById("materialsOption");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+}
+function hideLightningOption() {
+    var x = document.getElementById("lightningOption");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+}
+</script>
 </html>

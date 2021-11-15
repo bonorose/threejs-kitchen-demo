@@ -22,6 +22,12 @@ body {
     left:2px;
 }
 
+button {
+    background-color: inherit;
+    border: none;
+}
+
+
 .webgl
 {
     position: absolute;
@@ -34,6 +40,7 @@ body {
 .optionsMenu {
     background: rgb(24, 24, 24);
     height: 100vh;
+    display: block;
 }
 
 .itemOption {

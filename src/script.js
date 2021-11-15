@@ -7,6 +7,7 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
+// ---- Three.js ---- //
 // Loading
 const textureLoader = new THREE.TextureLoader()
 const modelLoader = new GLTFLoader()
@@ -145,6 +146,7 @@ modelLoader.load(
  * Model Controls
  */
 console.log(scene)
+
 const modelOptions = gui.addFolder("Material Parameters")
 const woodOptions = modelOptions.addFolder("Wood")
 woodOptions.addColor(woodMatOptions, 'color')
